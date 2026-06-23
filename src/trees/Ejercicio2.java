@@ -13,20 +13,50 @@ public class Ejercicio2 {
             tree.insert(numero);
         }
 
-        // Imprimir el arbol
-        printTree(tree.getRoot());
+        // ¡Solo llama a invert! Él ya se encarga de imprimir antes y despues
+        invert(tree.getRoot());
     }
 
 
     public void printTree(Node<Integer> root){
         System.out.println("Imprimiendo el arbol: ");
-        invert(root);
+        printTreeRecursivo(root, 0);
+    }
+    private void printTreeRecursivo(Node<Integer> actual, int nivel) {
+        // 1. Por si actual es null
+        if (actual == null) {
+            return;
+        }
+    
+        // 2. Procesar primero el hijo DERECHO
+        printTreeRecursivo(actual.getRight(), nivel + 1);
+    
+        // 3. Imprimir el nodo actual con tabulaciones según su nivel
+        if (nivel != 0) {
+            for (int i = 0; i < nivel - 1; i++) {
+                System.out.print("\t");
+            }
+            System.out.println("\t" + actual.getValue());
+        } else {
+            // Es la raíz principal
+            System.out.println(actual.getValue());
+        }
+    
+        printTreeRecursivo(actual.getLeft(), nivel + 1);
     }
 
     public Node<Integer> invert(Node<Integer> root) {
-        // imprimir el árbol original
+        // 1. Imprimir el árbol original
+        System.out.println("--- Arbol Original ---");
         printTree(root);
+    
+        // 2. Invertir la estructura físicamente
         invertRecursively(root);
+    
+        // 3. ¡ESTO ES LO QUE FALTA! Imprimir el árbol ya invertido
+        System.out.println("\n--- Arbol Invertido ---");
+        printTree(root);
+    
         return root;
     }
 

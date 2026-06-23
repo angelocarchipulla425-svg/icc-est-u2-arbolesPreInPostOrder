@@ -43,7 +43,6 @@ public class Ejercicio1 {
             System.out.println(actual.getValue());
         }
     
-        // 4. Procesar el hijo IZQUIERDO (Asegúrate de tener esta línea al final)
         printTreeRecursivo(actual.getLeft(), nivel + 1);
     }
 
