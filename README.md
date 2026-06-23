@@ -42,8 +42,3 @@ El proyecto está organizado dentro del paquete de estructuras con las siguiente
 * **Responsabilidad:** Instancia las clases anteriores, quema o solicita datos de prueba, construye los árboles y muestra los resultados de los recorridos por la terminal.
 
 ---
-
-## Requisitos de Ejecución
-* **Entorno de Desarrollo:** Visual Studio Code / NetBeans
-* **JDK:** Versión 11 o superior
-* **Herramientas de Control de Versiones:** Git

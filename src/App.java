@@ -1,11 +1,14 @@
-import structures.BinaryTrees;
-import structures.IntTree;
-import structures.Person;
+import trees.BinaryTrees;
+import trees.Ejercicio1;
+import trees.Ejercicio2;
+import trees.IntTree;
+import trees.Person;
 
 public class App {
     public static void main(String[] args) throws Exception {
         runIntTree();
         runPersonTree();
+        runEjercicios();
     }
 
     private static void runIntTree() {
@@ -100,5 +103,16 @@ public class App {
         // 6. Altura del árbol
         int altura = personTree.obtenerAltura();
         System.out.println("ALTURA DEL ARBOL: " + altura); // Debería ser: 3
+    }
+
+    private static void runEjercicios() {
+        Ejercicio1 ejercicio1 = new Ejercicio1();
+        int[] numeros = new int[] { 5, 3, 7, 2, 4, 6, 8};
+        ejercicio1.insert(numeros);
+
+        Ejercicio2 ejercicio2 = new Ejercicio2();
+        int[] numeros1 = new int[] { 5, 3, 7, 2, 4, 6, 8};
+        ejercicio2.insert(numeros1);
+
     }
 }
