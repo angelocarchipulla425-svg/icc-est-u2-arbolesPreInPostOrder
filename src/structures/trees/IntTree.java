@@ -1,46 +1,53 @@
-package trees;
+package structures.trees;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class BinaryTrees <T extends Comparable<T>> {
-    private Node<T> root;
+import structures.node.Node;
+
+// Clase que representa un árbol binario de enteros
+public class IntTree {
+
+    private Node<Integer> root;
     private int peso;
 
     /// Constructor SIEMPRE inicializa LAS VARIABLES (ROOT)
+    public IntTree() {
+        this.root = null;
+    }
 
     public boolean isEmpty() {
         return root == null;
     }
 
-    public Node<T> getRoot() {
+    public Node<Integer> getRoot() {
         return root;
     }
 
-    public void setRoot(Node<T> node) {
+    public void setRoot(Node<Integer> node) {
         this.root = node;
     }
 
-    public void setRoot(T value) {
-        Node<T> node = new Node<T>(value);
+    public void setRoot(Integer value) {
+        Node<Integer> node = new Node<Integer>(value);
         this.root = node;
     }
 
     // Método principal para insertar un valor desde fuera
-    public void insert(T value) { 
-        Node<T> node = new Node<T>(value);
+    public void insert(Integer value) { 
+        Node<Integer> node = new Node<Integer>(value);
         this.root = insertRecursivo(root, node);
-        peso ++;
+        peso++;
     }
 
     // Recursivo para insertar valores ÁRBOL BINARIO DE BÚSQUEDA
-    private Node<T> insertRecursivo(Node<T> actual, Node<T> nodeInsertar) {
+    private Node<Integer> insertRecursivo(Node<Integer> actual, Node<Integer> nodeInsertar) {
         if (actual == null) {
             return nodeInsertar;
         }
 
         // Validar si es mayor o menor y decidir si lo ingreso a la der o izq
-        if (actual.getValue().compareTo(nodeInsertar.getValue()) > 0) {
+        if (actual.getValue() > nodeInsertar.getValue()) {
             actual.setLeft(insertRecursivo(actual.getLeft(), nodeInsertar));
         } else {
             actual.setRight(insertRecursivo(actual.getRight(), nodeInsertar));
@@ -55,7 +62,7 @@ public class BinaryTrees <T extends Comparable<T>> {
         System.out.println();
     }
 
-    private void preOrderRecursivo(Node<T> actual) {
+    private void preOrderRecursivo(Node<Integer> actual) {
         if (actual == null) {
             return;
         }
@@ -70,7 +77,7 @@ public class BinaryTrees <T extends Comparable<T>> {
         System.out.println();
     }
 
-    private void posOrderRecursivo(Node<T> actual) {
+    private void posOrderRecursivo(Node<Integer> actual) {
         if (actual == null) {
             return;
         }
@@ -85,7 +92,7 @@ public class BinaryTrees <T extends Comparable<T>> {
         System.out.println();
     }
 
-    private void inOrderRecursivo(Node<T> actual) {
+    private void inOrderRecursivo(Node<Integer> actual) {
         if (actual == null) {
             return;
         }
@@ -98,11 +105,11 @@ public class BinaryTrees <T extends Comparable<T>> {
     public void niveles() {
         if (root == null) return;
 
-        Queue<Node<T>> cola = new LinkedList<>();
+        Queue<Node<Integer>> cola = new LinkedList<>();
         cola.add(root);
 
         while (!cola.isEmpty()) {
-            Node<T> actual = cola.poll();
+            Node<Integer> actual = cola.poll();
             System.out.print(actual.getValue() + " ");
 
             if (actual.getLeft() != null) {
@@ -120,7 +127,7 @@ public class BinaryTrees <T extends Comparable<T>> {
         return calcularAltura(root);
     }
 
-    private int calcularAltura(Node<T> actual) {
+    private int calcularAltura(Node<Integer> actual) {
         if (actual == null) {
             return 0; 
         }
@@ -134,7 +141,7 @@ public class BinaryTrees <T extends Comparable<T>> {
         return calcularPeso(root);
     }
 
-    private int calcularPeso(Node<T> actual) {
+    private int calcularPeso(Node<Integer> actual) {
         if(actual == null){
             return 0;
         }
@@ -150,4 +157,3 @@ public class BinaryTrees <T extends Comparable<T>> {
     }
 
 }
-

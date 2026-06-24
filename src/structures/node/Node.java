@@ -1,4 +1,4 @@
-package trees;
+package structures.node;
 
 // NODO para arboles binarios
 // DOS REFERENCIAS: izquierda y derecha

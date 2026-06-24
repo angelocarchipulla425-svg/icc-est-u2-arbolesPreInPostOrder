@@ -1,16 +1,59 @@
-import trees.BinaryTrees;
-import trees.Ejercicio1;
-import trees.Ejercicio2;
-import trees.Ejercicio3;
-import trees.Ejercicio4;
-import trees.IntTree;
-import trees.Person;
+import java.util.Set;
+
+import collections.Sets;
+import models.Contacto;
+import models.Person;
+import structures.trees.BinaryTrees;
+import structures.trees.Ejercicio1;
+import structures.trees.Ejercicio2;
+import structures.trees.Ejercicio3;
+import structures.trees.Ejercicio4;
+import structures.trees.IntTree;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        runIntTree();
-        runPersonTree();
-        runEjercicios();
+        //runIntTree();
+        //runPersonTree();
+        //runEjercicios();
+
+        runsSets();
+    }
+
+    private static void runsSets() {
+        Sets sets = new Sets();
+
+        // Primera implementación: HashSet
+        System.out.println("Método: HashSet");
+        Set<String> hashSet = sets.construirHashSet();
+        System.out.println(hashSet);
+        System.out.println("Tamaño: " + hashSet.size());
+        System.out.println(hashSet.contains("F"));
+
+        // Segunda implementación: LinkedHashSet
+        System.out.println("Método: LinkedHashSet ");
+        Set<String> linkedHashSet = sets.construirLinkedHashSet();
+        System.out.println(linkedHashSet);
+        System.out.println("Tamaño: " + linkedHashSet.size());
+        System.out.println(linkedHashSet.contains("F"));
+
+        // Tercera implementación: treSet
+        System.out.println("Método: treSet");
+        Set<String> treSet = sets.construirLinkedHashSet();
+        System.out.println(treSet);
+        System.out.println("Tamaño: " + treSet.size());
+        System.out.println(treSet.contains("F"));
+
+        // Cuarta implementación: treSet
+        System.out.println("Método: treSet");
+        Set<Contacto> tCSet = sets.construirTreeSetConComparador();
+        System.out.println(tCSet);
+        System.out.println("Tamaño: " + tCSet.size());
+
+        // Quinta implementación: construirHashSetContacto()
+        System.out.println("Método: treSet");
+        Set<Contacto> hCSet = sets.construirHashSetContacto();
+        System.out.println(hCSet);
+        System.out.println("Tamaño: " + hCSet.size());
     }
 
     private static void runIntTree() {
