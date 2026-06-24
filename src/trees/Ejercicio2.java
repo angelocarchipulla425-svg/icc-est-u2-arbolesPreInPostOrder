@@ -13,7 +13,7 @@ public class Ejercicio2 {
             tree.insert(numero);
         }
 
-        // ¡Solo llama a invert! Él ya se encarga de imprimir antes y despues
+        
         invert(tree.getRoot());
     }
 
@@ -53,7 +53,7 @@ public class Ejercicio2 {
         // 2. Invertir la estructura físicamente
         invertRecursively(root);
     
-        // 3. ¡ESTO ES LO QUE FALTA! Imprimir el árbol ya invertido
+        // 3. Imprimir el árbol ya invertido
         System.out.println("\n--- Arbol Invertido ---");
         printTree(root);
     

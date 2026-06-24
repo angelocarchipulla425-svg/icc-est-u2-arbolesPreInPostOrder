@@ -1,6 +1,8 @@
 import trees.BinaryTrees;
 import trees.Ejercicio1;
 import trees.Ejercicio2;
+import trees.Ejercicio3;
+import trees.Ejercicio4;
 import trees.IntTree;
 import trees.Person;
 
@@ -114,5 +116,14 @@ public class App {
         int[] numeros1 = new int[] { 5, 3, 7, 2, 4, 6, 8};
         ejercicio2.insert(numeros1);
 
+        Ejercicio3 ejercicio3 = new Ejercicio3();
+        int[] numeros3 = new int[] { 4, 2, 7, 1, 3, 6, 9};
+        ejercicio3.insert(numeros3);
+
+        Ejercicio4 ejercicio4 = new Ejercicio4();
+        int[] numeros4 = new int[] { 4, 2, 7, 1, 3, 8, 9};
+        ejercicio4.insert(numeros4);
+
     }
+    
 }

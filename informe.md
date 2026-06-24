@@ -110,3 +110,135 @@ public void invertRecursively(Node<Integer> root) {
 }
 ```
 ![alt text](image-15.png)
+
+## Ejercicio 03: Listar Niveles en Listas Enlazadas
+
+### Explicación de la lógica y del método `listLevels`
+La idea de este ejercicio es separar los números del árbol según el "piso" o nivel en el que se encuentren. En lugar de ver la estructura colgada hacia abajo, lo que hago es agrupar los nodos horizontalmente en listas separadas por cada nivel. Al final, se junta todas estas listas para que en la consola se puedan imprimir en orden, fila por fila, usando flechas (` -> `) para que se entienda la secuencia de cada nivel.
+
+* **Lógica del algoritmo:** Para lograr esto, uso una cola (`Queue`) como ayuda para revisar el árbol por niveles. Empiezo metiendo el nodo raíz. Con un ciclo `while` que corre mientras la cola tenga datos, calculo cuántos elementos hay en ese nivel exacto usando `queue.size()`. Luego, con un ciclo `for`, voy sacando cada nodo con `queue.poll()`, lo guardo en la lista del nivel actual y reviso si tiene un hijo izquierdo (`getLeft()`) o derecho (`getRight()`). Si tiene hijos, los meto a la cola para que se procesen cuando pasemos al siguiente piso. Por último, uso un método sencillo para imprimir los valores en pantalla poniendo las flechitas en medio de los números.
+
+### Evidencia de Código (Ejercicio 03)
+```java
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
+public class Ejercicio3 {
+
+    public void insert(int[] numeros) {
+        // Crear un arbol BTS, instanciar BinaryTrees
+        BinaryTrees<Integer> tree = new BinaryTrees<>();
+        
+        // Insertar los numeros en el arbol
+        for(int numero : numeros) {
+            tree.insert(numero);
+        }
+        
+        // Imprimir los niveles del árbol
+        printLevels(tree.getRoot());
+    }
+
+    // Recorrer las listas e imprimir con el formato de flechas
+    private void printLevels(Node<Integer> root) {
+        System.out.println("Output:");
+        
+        List<List<Node<Integer>>> resultado = listLevels(root);
+
+        for (List<Node<Integer>> nivel : resultado) {
+            for (int i = 0; i < nivel.size(); i++) {
+                System.out.print(nivel.get(i).getValue()); 
+                
+                // Imprimir flecha SOLO si no es el último nodo del nivel actual
+                if (i < nivel.size() - 1) {
+                    System.out.print(" -> ");
+                }
+            }
+            System.out.println(); 
+        }
+        System.out.println();
+    }
+
+    // Separa los nodos por niveles (BFS)
+    private List<List<Node<Integer>>> listLevels(Node<Integer> root) {
+        List<List<Node<Integer>>> result = new ArrayList<>();
+        
+        if (root == null) {
+            return result;
+        }
+
+        Queue<Node<Integer>> queue = new LinkedList<>();
+        queue.offer(root);
+
+        while (!queue.isEmpty()) {
+            int levelSize = queue.size();
+            List<Node<Integer>> currentLevelList = new LinkedList<>();
+
+            for (int i = 0; i < levelSize; i++) {
+                Node<Integer> actual = queue.poll();
+                currentLevelList.add(actual);
+
+                if (actual.getLeft() != null) {
+                    queue.offer(actual.getLeft());
+                }
+                
+                if (actual.getRight() != null) {
+                    queue.offer(actual.getRight());
+                }
+            }
+            
+            result.add(currentLevelList);
+        }
+
+        return result;
+    }
+}
+```
+
+## Ejercicio 04: Calcular la Profundidad Máxima
+
+### Explicación de la lógica y del método `maxDepth`
+En este ejercicio lo que busco es calcular la altura o la profundidad máxima del árbol. Se trata de contar cuántos nodos hay en el camino más largo posible desde el primer número (la raíz) hasta el número que haya quedado en el fondo del todo (la hoja más profunda).
+
+* **Lógica del algoritmo:** Para resolver esto uso recursividad, haciendo que el método se llame a sí mismo para ir bajando por las ramas. El truco está en el caso base: si el nodo actual está vacío (`null`), significa que llegué al final de un camino y devuelvo `0`. Si no está vacío, calculo por separado la profundidad de la rama izquierda en la variable `leftDepth` y la de la derecha en `rightDepth`. Al final, uso un `if-else` para comparar cuál de los dos lados llegó más lejos, y al número que sea mayor le sumo `1` (para contar el nodo en el que estoy parado en ese momento) antes de mandar el resultado final hacia arriba.
+
+### Evidencia de Código (Ejercicio 04)
+```java
+public class Ejercicio4 {
+
+    public void insert(int[] numeros) {
+        // Crear un arbol BTS - instanciar BinaryTrees
+        BinaryTrees<Integer> tree = new BinaryTrees<>();
+        
+        // Insertar los numeros en el arbol
+        for(int numero : numeros) {
+            tree.insert(numero);
+        }
+        
+        // Calcular la profundidad máxima e imprimirla
+        int profundidad = maxDepth(tree.getRoot());
+        System.out.println("Output: " + profundidad);
+        System.out.println();
+    }
+
+    // Calcular la profundidad máxima
+    private int maxDepth(Node<Integer> root) {
+        // Caso base: si el nodo es null, no suma profundidad
+        if (root == null) {
+            return 0;
+        }
+
+        // Calcular la profundidad de las ramas izquierda y derecha de forma recursiva
+        int leftDepth = maxDepth(root.getLeft());
+        int rightDepth = maxDepth(root.getRight());
+
+        // Evaluar explícitamente qué camino es más largo y sumar el nodo actual (+1)
+        if (leftDepth > rightDepth) {
+            return leftDepth + 1;
+        } else {
+            return rightDepth + 1;
+        }
+    }
+}
+``` 
