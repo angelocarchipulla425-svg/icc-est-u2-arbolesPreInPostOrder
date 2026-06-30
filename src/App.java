@@ -1,6 +1,7 @@
 import java.util.Set;
 
 import collections.Sets;
+import collections.maps.Maps;
 import models.Contacto;
 import models.Person;
 import structures.trees.BinaryTrees;
@@ -16,8 +17,19 @@ public class App {
         //runPersonTree();
         //runEjercicios();
 
-        runsSets();
+        //runsSets();
+        runMaps();
     }
+
+    private static void runMaps() {
+        Maps maps = new Maps();
+        maps.construirHashMap();
+        System.out.println("\n LINKEDSET");
+        maps.coLinkedHashMap();
+        System.out.println("\n ARBOL");
+        maps.cTreeMap();
+    }
+
 
     private static void runsSets() {
         Sets sets = new Sets();
