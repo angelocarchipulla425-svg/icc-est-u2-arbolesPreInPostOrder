@@ -1,9 +1,10 @@
 import java.util.Set;
 
-import collections.Sets;
+import collections.sets.Sets;
 import collections.maps.Maps;
 import models.Contacto;
 import models.Person;
+import structures.graphs.Graph;
 import structures.trees.BinaryTrees;
 import structures.trees.Ejercicio1;
 import structures.trees.Ejercicio2;
@@ -18,7 +19,8 @@ public class App {
         //runEjercicios();
 
         //runsSets();
-        runMaps();
+        //runMaps();
+        runGraphs();
     }
 
     private static void runMaps() {
@@ -28,6 +30,31 @@ public class App {
         maps.coLinkedHashMap();
         System.out.println("\n ARBOL");
         maps.cTreeMap();
+    }
+
+    private static <T> void  runGraphs(){
+        Graph<String> graphs = new Graph<>();
+        System.out.println("Grafos");
+        graphs.add("A");
+        graphs.addConectionUni("A","B");
+
+
+        graphs.add("B");
+        graphs.addConection("C", "D");
+
+
+        graphs.add("C");
+        graphs.addConection("A", "D");
+
+        graphs.add("D");
+        graphs.addConection("C", "J");
+
+        graphs.add("J");
+        graphs.addConection("J", "D");
+
+        
+
+        graphs.printGraph();
     }
 
 

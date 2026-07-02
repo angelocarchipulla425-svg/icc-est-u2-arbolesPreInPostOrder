@@ -68,6 +68,17 @@ Algoritmos diseñados para evaluar las dimensiones y carga del árbol.
 * `insert(T value)`: Interfaz pública que incrementa el atributo `peso` en tiempo constante cada vez que se añade un nuevo elemento.
 * `insertRecursivo(Node<T> actual, Node<T> nodeInsertar)`: Método auxiliar privado que navega recursivamente hasta hallar la posición exacta de inserción.
 
+## Estructura y Conectividad del Grafo (Lista de Adyacencia)
+
+Estructura orientada a objetos diseñada para representar un grafo dirigido mediante listas de adyacencia, utilizando un mapa hash (`Map`) y conjuntos (`Set`) genéricos para optimizar la búsqueda y asegurar la unicidad de las relaciones.
+
+* `add(T data)`: Registra un nuevo vértice en el grafo de manera segura. Al mapear una clave de tipo `Node<T>` con un `HashSet<Node<T>>` vacío, prepara espacios para sus futuros vecinos con una complejidad de tiempo constante $O(1)$.
+* `addConectionUni(T v1, T v2)`: Establece una arista dirigida (unidireccional) desde el nodo origen hacia el nodo destino. Tiene los datos genéricos en instancias de `Node<T>` y, tras asegurar la existencia de las claves en el mapa mediante `putIfAbsent()`, añade el destino al conjunto del origen. El uso de `Set` evita que se dupliquen conexiones idénticas.
+* `printGraph()`: Método de visualización que recorre el mapa iterando sobre sus entradas (`Map.Entry`). Imprime en consola de forma estructurada cada nodo junto con el conjunto de vecinos a los que apunta.
+
+![alt text](image-17.png)
+![alt text](image-18.png)
+
 ---
 
 ### 5. `App.java`
@@ -77,3 +88,4 @@ Algoritmos diseñados para evaluar las dimensiones y carga del árbol.
 ### 6. `Capturas del App`
 ![alt text](image-12.png)
 ![alt text](image-13.png)
+![alt text](image-16.png)
