@@ -68,7 +68,7 @@ Algoritmos diseñados para evaluar las dimensiones y carga del árbol.
 * `insert(T value)`: Interfaz pública que incrementa el atributo `peso` en tiempo constante cada vez que se añade un nuevo elemento.
 * `insertRecursivo(Node<T> actual, Node<T> nodeInsertar)`: Método auxiliar privado que navega recursivamente hasta hallar la posición exacta de inserción.
 
-## Estructura y Conectividad del Grafo (Lista de Adyacencia)
+## Estructura y Conexiones del Grafo
 
 Estructura orientada a objetos diseñada para representar un grafo dirigido mediante listas de adyacencia, utilizando un mapa hash (`Map`) y conjuntos (`Set`) genéricos para optimizar la búsqueda y asegurar la unicidad de las relaciones.
 
