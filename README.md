@@ -70,7 +70,7 @@ Algoritmos diseñados para evaluar las dimensiones y carga del árbol.
 
 ## Estructura y Conexiones del Grafo
 
-Estructura orientada a objetos diseñada para representar un grafo dirigido mediante listas de adyacencia, utilizando un mapa hash (`Map`) y conjuntos (`Set`) genéricos para optimizar la búsqueda y asegurar la unicidad de las relaciones.
+Representa un grafo dirigido mediante listas de adyacencia, utilizando un mapa hash (`Map`) y conjuntos (`Set`) genéricos para mejorar la búsqueda de la mejor manera y asegurar la unicidad de las relaciones.
 
 * `add(T data)`: Registra un nuevo vértice en el grafo de manera segura. Al mapear una clave de tipo `Node<T>` con un `HashSet<Node<T>>` vacío, prepara espacios para sus futuros vecinos con una complejidad de tiempo constante $O(1)$.
 * `addConectionUni(T v1, T v2)`: Establece una arista dirigida (unidireccional) desde el nodo origen hacia el nodo destino. Tiene los datos genéricos en instancias de `Node<T>` y, tras asegurar la existencia de las claves en el mapa mediante `putIfAbsent()`, añade el destino al conjunto del origen. El uso de `Set` evita que se dupliquen conexiones idénticas.
