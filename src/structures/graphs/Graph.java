@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
 import structures.node.Node;
 
 
@@ -48,13 +47,17 @@ public class Graph<T> {
     }
     
     public void printGraph(){
-        for(Map.Entry<Node<T>, Set<Node<T>>> entry : graph.entrySet()){
+        for (Map.Entry<Node<T>, Set<Node<T>>> entry : graph.entrySet()){
             System.out.println(entry.getKey() + " -> ");
-            for(Node<T> coneccion : entry.getValue()){
+            for (Node<T> coneccion : entry.getValue()){
                 System.out.println(coneccion);
             }
             System.out.println();
         } 
+    }
+
+    public Set<Node<T>> getVecinos(T current) {
+        return graph.getOrDefault(new Node<T>(current), new HashSet<Node<T>>());
     }
 
     

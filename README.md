@@ -79,6 +79,29 @@ Representa un grafo dirigido mediante listas de adyacencia, utilizando un mapa h
 ![alt text](image-17.png)
 ![alt text](image-18.png)
 
+
+## Búsqueda de Caminos en Grafos (Pathfinding)
+
+En esta parte del proyecto se hizo una herramienta para encontrar caminos entre diferentes puntos (nodos) dentro de un grafo. 
+Le damos un punto de inicio, un destino, y el código se encarga de buscar la ruta y decirnos por dónde pasó.
+
+### ¿Qué hace cada clase?
+
+* **`PathFinder` (La regla general):**
+  Esta es solo una interfaz, es decir, un molde o contrato. Lo único que hace es decir: *"Cualquier clase que quiera buscar caminos en este proyecto, tiene que tener un método llamado `find`"*. Lo dejamos así por si en el futuro queremos agregar otros métodos de búsqueda diferentes al que usamos ahora.
+
+* **`DFSPathFinder` (El buscador en sí):**
+  Aquí es donde está la magia. Esta clase hace el trabajo pesado usando el método de "Búsqueda en Profundidad" (DFS). Imagina que estás en un laberinto: el algoritmo elige un camino y avanza hasta llegar al fondo. Si choca con un callejón sin salida, simplemente retrocede un paso y prueba por otra ruta. A la vez, va anotando por dónde ya pasó para no quedarse atrapado dando vueltas en círculos. 
+
+* **`PathResult` (El reporte final):**
+  Cuando el buscador termina su trabajo, no nos dice solamente "sí llegué" o "no llegué". En su lugar, nos devuelve este objeto que contiene dos listas importantes:
+  1. Todos los nodos que tuvo que visitar o explorar.
+  2. El camino exacto (la ruta exitosa) para llegar de inicio a fin.
+  Usamos una estructura llamada `LinkedHashSet` para guardar esto porque nos ayuda a mantener el orden exacto en el que pasamos por cada lugar, sin anotar repetidos.
+
+* **`App.runGraphsImplementations` (La zona de pruebas):**
+  Este es el lugar donde ponemos todo a funcionar. Aquí creamos un grafo de prueba, le metemos unas cuantas letras (como "A", "B", "C") y las conectamos entre sí. Algunas letras tienen caminos de ida y vuelta, y otras solo de ida. Finalmente, llamamos a nuestro buscador para ver si logra encontrar rutas, probando tanto caminos fáciles como caminos imposibles para ver cómo reacciona.
+
 ---
 
 ### 5. `App.java`

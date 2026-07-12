@@ -5,6 +5,8 @@ import collections.maps.Maps;
 import models.Contacto;
 import models.Person;
 import structures.graphs.Graph;
+import structures.graphs.PathResult;
+import structures.graphs.implementations.DFSPathFinder;
 import structures.trees.BinaryTrees;
 import structures.trees.Ejercicio1;
 import structures.trees.Ejercicio2;
@@ -20,7 +22,31 @@ public class App {
 
         //runsSets();
         //runMaps();
-        runGraphs();
+        //runGraphs();
+        runGraphsImplementations();
+    }
+
+    private static void runGraphsImplementations(){
+        Graph<String> g = new Graph<>();
+        g.addConection("A", "B");
+        g.addConection("A", "C");
+        g.addConection("B", "D");
+        g.addConection("C", "J");
+        g.addConectionUni("D", "E");
+        g.addConection("E", "F");
+        g.addConectionUni("K", "J");
+
+        
+        DFSPathFinder<String> dfs = new DFSPathFinder<String>();
+        PathResult<String> result = dfs.find(g, "A", "F");
+        PathResult<String> result2 = dfs.find(g, "A", "J");
+        PathResult<String> result3 = dfs.find(g, "A", "K");
+
+        System.out.println(result);
+        System.out.println(result2);
+        System.out.println(result3);
+
+
     }
 
     private static void runMaps() {
