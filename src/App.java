@@ -6,6 +6,7 @@ import models.Contacto;
 import models.Person;
 import structures.graphs.Graph;
 import structures.graphs.PathResult;
+import structures.graphs.implementations.BFSPathFinder;
 import structures.graphs.implementations.DFSPathFinder;
 import structures.trees.BinaryTrees;
 import structures.trees.Ejercicio1;
@@ -23,7 +24,29 @@ public class App {
         //runsSets();
         //runMaps();
         //runGraphs();
-        runGraphsImplementations();
+        //runGraphsImplementations();
+        runGraphsImplementationsBFS();
+    }
+
+    private static void runGraphsImplementationsBFS() {
+        Graph<String> g = new Graph<>();
+        g.addConection("A", "B");
+        g.addConection("A", "C");
+        g.addConection("B", "D");
+        g.addConection("C", "J");
+        g.addConectionUni("D", "E");
+        g.addConection("E", "F");
+        g.addConectionUni("K", "J");
+
+        BFSPathFinder<String> bfs = new BFSPathFinder<String>();
+        PathResult<String> result = bfs.find(g, "A", "F");
+        PathResult<String> result2 = bfs.find(g, "A", "F");
+        PathResult<String> result3 = bfs.find(g, "A", "F");
+
+        System.out.println(result);
+        System.out.println(result2);
+        System.out.println(result3);
+
     }
 
     private static void runGraphsImplementations(){
